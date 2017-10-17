@@ -54,9 +54,7 @@ public class IndexFragment extends Fragment implements SwipeRefreshLayout.OnRefr
         LinearLayoutManager manager = new LinearLayoutManager(mContext);
         recyclerView.setLayoutManager(manager);
         List<String> datas = new ArrayList<>();
-        for (int i = 0; i < 100; i++) {
-            datas.add("This is item " + i);
-        }
+        getDatas(datas);
         adapter = new IndexRecyclerViewAdapter(mContext, datas);
         adapter.setHeadView(headView);
         recyclerView.setAdapter(adapter);
@@ -75,6 +73,12 @@ public class IndexFragment extends Fragment implements SwipeRefreshLayout.OnRefr
         });
 
 
+    }
+
+    public void getDatas(List<String> datas) {
+        for (int i = 0; i < 100; i++) {
+            datas.add("This is item " + i);
+        }
     }
 
 

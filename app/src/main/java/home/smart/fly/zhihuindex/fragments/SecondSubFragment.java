@@ -83,7 +83,7 @@ public class SecondSubFragment extends Fragment implements SwipeRefreshLayout.On
             public void run() {
                 swipeRefreshLayout.setRefreshing(false);
             }
-        }, 2000);
+        }, 5000);
 
     }
 

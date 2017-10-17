@@ -71,7 +71,7 @@
             android:layout_marginTop="5dp"
             android:ellipsize="end"
             android:lines="3"
-            android:text="@string/large_text"
+            android:text="@string/content"
             android:textColor="@color/black" />
 
         <LinearLayout

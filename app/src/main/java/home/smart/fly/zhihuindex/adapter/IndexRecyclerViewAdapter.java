@@ -53,7 +53,6 @@ public class IndexRecyclerViewAdapter extends RecyclerView.Adapter<IndexRecycler
             return new MyViewHolder(headView);
         }
 
-
         View view = LayoutInflater.from(mContext).inflate(R.layout.index_list_item, null);
         MyViewHolder holder = new MyViewHolder(view);
         return holder;
@@ -67,22 +66,22 @@ public class IndexRecyclerViewAdapter extends RecyclerView.Adapter<IndexRecycler
         }
 
         final int pos = getRealPosition(holder);
-
-        if (pos == 1) {
-            holder.liveList.setVisibility(View.VISIBLE);
-            holder.normalShell.setVisibility(View.GONE);
-        } else {
-            holder.liveList.setVisibility(View.GONE);
-            holder.normalShell.setVisibility(View.VISIBLE);
-        }
+//// TODO: 2017/10/17  
+//        if (pos == 1) {
+//            holder.liveList.setVisibility(View.VISIBLE);
+//            holder.normalShell.setVisibility(View.GONE);
+//        } else {
+//            holder.liveList.setVisibility(View.GONE);
+//            holder.normalShell.setVisibility(View.VISIBLE);
+//        }
 
 
 //        holder.text.setText(datas.get(pos));
 
-        Glide.with(mContext).load(Constant.headPics.get(pos % 3)).placeholder(R.drawable.profile).into(holder.profile_pic);
-        Glide.with(mContext).load(Constant.itemPics.get(pos % 3)).placeholder(R.drawable.cardpic).into(holder.pic);
+        Glide.with(mContext).load(Constant.headPics.get(pos % 3)).placeholder(R.drawable.profile).into(holder.imgProfile);
 
-        holder.menu.setOnClickListener(new View.OnClickListener() {
+
+        holder.imgMore.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 ListItemMenu menu = new ListItemMenu(menuW, menuH, mContext);
@@ -113,23 +112,30 @@ public class IndexRecyclerViewAdapter extends RecyclerView.Adapter<IndexRecycler
         return headView == null ? datas.size() : datas.size() + 1;
     }
 
-    public class MyViewHolder extends RecyclerView.ViewHolder {
-        TextView text;
-        ImageView menu;
-        CircleImageView profile_pic;
-        ImageView pic;
-        LinearLayout normalShell;
-        RecyclerView liveList;
+    private class MyViewHolder extends RecyclerView.ViewHolder {
+        CircleImageView imgProfile;
+        TextView tvTitle;
+        ImageView imgMore;
 
-        public MyViewHolder(View itemView) {
+        TextView tvContent;
+
+        ImageView imgLove;
+        TextView tvLoveCount;
+        ImageView imgComment;
+        TextView tvCommentCount;
+
+        private MyViewHolder(View itemView) {
             super(itemView);
             if (itemView == headView) return;
-            text = (TextView) itemView.findViewById(R.id.text);
-            menu = (ImageView) itemView.findViewById(R.id.menu);
-            profile_pic = (CircleImageView) itemView.findViewById(R.id.profile_image);
-            pic = (ImageView) itemView.findViewById(R.id.pic);
-            normalShell = (LinearLayout) itemView.findViewById(R.id.normalList);
-            liveList = (RecyclerView) itemView.findViewById(R.id.liveList);
+            tvTitle = (TextView) itemView.findViewById(R.id.tv_title);
+            imgMore = (ImageView) itemView.findViewById(R.id.img_more);
+            imgProfile = (CircleImageView) itemView.findViewById(R.id.img_profile);
+            tvContent = (TextView) itemView.findViewById(R.id.tv_content);
+            imgLove = (ImageView) itemView.findViewById(R.id.img_love);
+            tvLoveCount = (TextView) itemView.findViewById(R.id.tv_love_count);
+            imgComment = (ImageView) itemView.findViewById(R.id.img_comment);
+            tvCommentCount = (TextView) itemView.findViewById(R.id.tv_comment_count);
+
         }
     }
 
